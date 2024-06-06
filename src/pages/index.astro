@@ -15,9 +15,9 @@ import Layout from "../layouts/Layout.astro";
       <h1 id="welcomeText" class="hidden text-center text-4xl font-semibold">
         Welcome <span id="ip-address"></span>
       </h1>
-      <button id="welcomeButton" class="mb-2 text-4xl font-semibold"
-        >Click here</button
-      >
+      <button id="welcomeButton" class="mb-2 text-4xl font-semibold">
+        Click here
+      </button>
       <img
         src={orugaImg.src}
         alt="oruga"
@@ -36,18 +36,22 @@ import Layout from "../layouts/Layout.astro";
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         color="#cdd6f4"
-        ><path
+      >
+        <path
           d="M3 13C6.6 5 17.4 5 21 13"
           stroke="#cdd6f4"
           stroke-width="1.5"
           stroke-linecap="round"
-          stroke-linejoin="round"></path><path
+          stroke-linejoin="round"
+        ></path>
+        <path
           d="M12 17C10.3431 17 9 15.6569 9 14C9 12.3431 10.3431 11 12 11C13.6569 11 15 12.3431 15 14C15 15.6569 13.6569 17 12 17Z"
           stroke="#cdd6f4"
           stroke-width="1.5"
           stroke-linecap="round"
-          stroke-linejoin="round"></path></svg
-      >
+          stroke-linejoin="round"
+        ></path>
+      </svg>
       <p id="counter">0</p>
     </div>
   </main>
@@ -69,6 +73,7 @@ import Layout from "../layouts/Layout.astro";
       visits = 1;
       localStorage.setItem("visited", true);
     } else {
+      visits = parseInt(visits) + 1;
     }
 
     document.getElementById("counter").textContent = visits;
@@ -79,15 +84,15 @@ import Layout from "../layouts/Layout.astro";
     .getElementById("welcomeButton")
     ?.addEventListener("click", async () => {
       const audio = document.getElementById("oruga");
-      audio.play()
+      audio.play();
 
       const welcomeText = document.getElementById("welcomeText");
-      welcomeText.style.display = "block";
+      welcomeText.classList.remove('hidden');
 
       const welcomeButton = document.getElementById("welcomeButton");
-      welcomeButton.style.display = "none";
+      welcomeButton.classList.add('hidden');
 
       const welcomeImg = document.getElementById("welcomeImg");
-      welcomeImg.style.display = "block";
+      welcomeImg.classList.remove('hidden');
     });
 </script>
