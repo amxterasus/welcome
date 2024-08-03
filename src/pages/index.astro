@@ -27,33 +27,6 @@ import Layout from "../layouts/Layout.astro";
         class="hidden mx-auto"
       />
     </div>
-    <div class="flex gap-1 fixed bottom-0 left-0 p-4">
-      <svg
-        width="24px"
-        height="24px"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        color="#cdd6f4"
-      >
-        <path
-          d="M3 13C6.6 5 17.4 5 21 13"
-          stroke="#cdd6f4"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
-        <path
-          d="M12 17C10.3431 17 9 15.6569 9 14C9 12.3431 10.3431 11 12 11C13.6569 11 15 12.3431 15 14C15 15.6569 13.6569 17 12 17Z"
-          stroke="#cdd6f4"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
-      </svg>
-      <p id="counter">0</p>
-    </div>
   </main>
 </Layout>
 
@@ -65,34 +38,21 @@ import Layout from "../layouts/Layout.astro";
         const ipAddress = data.ip;
         document.getElementById("ip-address").textContent = ipAddress;
       });
-
-    let visits = localStorage.getItem("visits");
-    let visited = localStorage.getItem("visited");
-
-    if (visits === null || !visited) {
-      visits = 1;
-      localStorage.setItem("visited", true);
-    } else {
-      visits = parseInt(visits) + 1;
-    }
-
-    document.getElementById("counter").textContent = visits;
-    localStorage.setItem("visits", visits.toString());
   };
 
   document
     .getElementById("welcomeButton")
     ?.addEventListener("click", async () => {
-      const audio = document.getElementById("oruga");
+      const audio = document.getElementById("oruga") as HTMLAudioElement;
       audio.play();
 
       const welcomeText = document.getElementById("welcomeText");
-      welcomeText.classList.remove('hidden');
+      welcomeText.classList.remove("hidden");
 
       const welcomeButton = document.getElementById("welcomeButton");
-      welcomeButton.classList.add('hidden');
+      welcomeButton.classList.add("hidden");
 
       const welcomeImg = document.getElementById("welcomeImg");
-      welcomeImg.classList.remove('hidden');
+      welcomeImg.classList.remove("hidden");
     });
 </script>
